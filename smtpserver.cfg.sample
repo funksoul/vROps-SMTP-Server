@@ -1,0 +1,53 @@
+[Server]
+# Network configuration
+BINDADDR = 0.0.0.0
+BINDPORT = 8668
+# Filter incoming messages using destination email address and vROps outbound alert rule name
+ACCEPTED_SENDER_DOMAIN = vrops.corp.local
+OUTBOUND_ALERT_RULE_NAME = SMTP Outbount Rule
+# All incoming messages are ignored if true
+SINKHOLE = False
+
+[Parser]
+DELIMITER_TAG = span
+# COMPANY_PREFIX Should be enclosed in single quotes
+COMPANY_PREFIX = 'CORP - '
+# 1. If you put the LANG environment variable to /etc/profile.d/vcops.sh,
+#    the standard email plugin will send alert messages localized.
+#    (ALERT_DEFINITION_NAME, ALERT_DEFINITION_DESC, ANOMALIES, ALERT_RECOMMENDATION)
+#    Use vROps 6 Web UI supported languages and UTF-8.
+#    ex) export LANG=ko_KR.UTF-8
+#
+# 2. Set the LANGUAGE parameter as one of the supported languages.
+#    (According to the LANG environment variable)
+# 
+#  LANG (env) | LANGUAGE
+# ============|=========+
+#  zh_TW.utf8 | zh-TW
+#  zh_CN.utf8 | zh-CN
+#  ko_KR.utf8 | ko
+#  ja_JP.utf8 | ja
+#  fr_FR.utf8 | fr
+#  de_DE.utf8 | de
+#  es_ES.utf8 | es
+#  en_US.utf8 | en
+#  *Not Set*  | en
+LANGUAGE = ko
+
+[vROps]
+# If vROps UI hostname is vrops.corp.local
+API_ENDPOINT = https://vrops.corp.local/suite-api/api
+API_USER = apiuser
+API_PASSWORD = apipassword
+VERIFY_CERT = False
+REQUEST_TIMEOUT = 10
+
+[Slack]
+WEBHOOK_URL = https://hooks.slack.com/services/..
+ICON_URL = http:/vrops.corp.local/files/vrops-256.png
+IMAGE_HOST = http://images.corp.local
+MSG_USERNAME = vROps
+# If vROps UI host needs external URL to access from the outside of the corporate network
+EXTERNAL_URL = http://vrops.corp.com
+VERIFY_CERT = False
+REQUEST_TIMEOUT = 10

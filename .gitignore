@@ -1,0 +1,7 @@
+Include
+Lib
+Scripts
+tmp
+.vscode
+*.log.*
+smtpserver.cfg
